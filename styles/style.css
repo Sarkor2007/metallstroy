@@ -365,8 +365,131 @@ html::-webkit-scrollbar-thumb {
 .calc-subtitle span {
   display: block;
 }
-.calc-content {
+.calc__content {
   max-width: 800px;
   width: 100%;
   height: 450px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calc__content-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.calc__content-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.calc__content-btn {
+  z-index: 2;
+  position: relative;
+  width: 350px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calc__content-btn::before {
+  content: "";
+  position: absolute;
+  background-image: url(../images/png/shadow.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transform: scale(2.7);
+}
+.calc__content-link {
+  color: var(--white);
+  font-family: Oswald;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 110%; /* 18.7px */
+  text-transform: uppercase;
+  padding: 0 40px;
+}
+
+.footer {
+  background-image: url(../images/jpg/intro.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.footer-filter {
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  position: relative;
+  z-index: 2;
+}
+.footer-logo {
+  width: 207px;
+  height: 50px;
+}
+.footer-logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.footer-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.footer-contact {
+  gap: 4px;
+  padding: 0 50px;
+}
+.footer-contact img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.footer-contact p {
+  color: var(--white);
+  font-family: Oswald;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 19px;
+  text-transform: uppercase;
+}
+.footer__lang {
+  width: 50px;
+}
+.footer__lang-btn {
+  position: absolute;
+  width: 100;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__lang-btn img {
+  width: 24px;
+  height: 24px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=style.css.map */

@@ -382,9 +382,128 @@ html::-webkit-scrollbar-thumb {
             display: block;
         }
     }
-    &-content {
+    &__content {
         max-width: 800px;
         width: 100%;
         height: 450px;
+        margin: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        &-btn {
+            z-index: 2;
+            position: relative;
+            width: 350px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &::before {
+                content: "";
+                position: absolute;
+                background-image: url(../images/png/shadow.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                z-index: -1;
+                width: 100%;
+                height: 100%;
+                transform: scale(2.7);
+            }
+        }
+        &-link {
+            color: var(--white);
+            font-family: Oswald;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 110%; /* 18.7px */
+            text-transform: uppercase;
+            padding: 0 40px;
+        }
+    }
+}
+
+.footer {
+    background-image: url(../images/jpg/intro.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    &-filter {
+        background: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+    & .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        position: relative;
+        z-index: 2;
+    }
+    &-logo {
+        width: 207px;
+        height: 50px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    &-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+    &-bar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    &-contact {
+        gap: 4px;
+        padding: 0 50px;
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        p {
+            color: var(--white);
+            font-family: Oswald;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 19px;
+            text-transform: uppercase;
+        }
+    }
+    &__lang {
+        width: 50px;
+        &-btn {
+            position: absolute;
+            width: 100;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+            }
+        }
     }
 }
