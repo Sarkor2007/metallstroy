@@ -46,7 +46,7 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background-color: grey;
+  background-color: var(--primary);
 }
 
 html::-webkit-scrollbar-thumb {
@@ -415,6 +415,77 @@ html::-webkit-scrollbar-thumb {
   line-height: 110%; /* 18.7px */
   text-transform: uppercase;
   padding: 0 40px;
+}
+
+.contacts {
+  margin: 50px 0;
+}
+.contacts-title {
+  color: var(--primary);
+  text-align: center;
+  font-family: Oswald;
+  font-size: 84px;
+  font-weight: 400;
+  line-height: 110%; /* 92.4px */
+  text-transform: uppercase;
+}
+.contacts__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+}
+.contacts__list-item {
+  height: 400px;
+  width: 33.3333333333%;
+}
+.contacts__list-item.center {
+  position: relative;
+}
+.contacts__list-item.center .contacts__list-text {
+  color: var(--white);
+}
+.contacts__list-item.center::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/jpg/contacts.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+}
+.contacts__list-item.one {
+  background-image: url(../images/png/4.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.contacts__list-item.two {
+  background-image: url(../images/png/2.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.contacts__list-link {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contacts__list-text {
+  text-align: center;
+  font-family: Oswald;
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 110%; /* 59.4px */
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 0 10px;
 }
 
 .footer {

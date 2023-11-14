@@ -48,7 +48,8 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-    background-color: grey;
+    // background-color: grey;
+    background-color: var(--primary);
 }
 
 html::-webkit-scrollbar-thumb {
@@ -72,23 +73,6 @@ html::-webkit-scrollbar-thumb {
     height: 50px;
     position: relative;
 }
-
-// .btn::before{
-//     content: '';
-//     position: absolute;
-//     z-index: 1;
-//     height: 100%;
-//     background-color: var(--white);
-//     width: 0;
-//     transition: .3s all;
-//     left: 0;
-//     top: 0;
-//     border-radius: 52px;
-// }
-
-// .btn:hover::before{
-//     width: 100%;
-// }
 
 .header {
     padding: 15px 0;
@@ -430,6 +414,78 @@ html::-webkit-scrollbar-thumb {
             line-height: 110%; /* 18.7px */
             text-transform: uppercase;
             padding: 0 40px;
+        }
+    }
+}
+
+.contacts {
+    margin: 50px 0;
+    &-title {
+        color: var(--primary);
+        text-align: center;
+        font-family: Oswald;
+        font-size: 84px;
+        font-weight: 400;
+        line-height: 110%; /* 92.4px */
+        text-transform: uppercase;
+    }
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 70px;
+        &-item {
+            height: 400px;
+            width: calc(100% / 3);
+            &.center{
+                position: relative;
+                .contacts__list-text{
+                    color: var(--white);
+                }
+            }
+            &.center::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: url(../images/jpg/contacts.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                // filter: blur(4px); 
+                top: 0;
+                left: 0;
+            }
+            &.one{
+                background-image: url(../images/png/4.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            &.two{
+                background-image: url(../images/png/2.png);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+        &-link{
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &-text {
+            text-align: center;
+            font-family: Oswald;
+            font-size: 44px;
+            font-weight: 400;
+            line-height: 110%; /* 59.4px */
+            text-transform: uppercase;
+            color: var(--primary);
+            padding: 0 10px;
         }
     }
 }
