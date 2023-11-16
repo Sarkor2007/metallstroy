@@ -56,6 +56,14 @@ html::-webkit-scrollbar-thumb {
     background-color: rgb(211, 208, 208);
 }
 
+body {
+    min-width: 330px;
+}
+
+body.active {
+    overflow-y: hidden;
+}
+
 .container {
     max-width: 1230px;
     padding: 0 15px;
@@ -72,6 +80,26 @@ html::-webkit-scrollbar-thumb {
     align-items: center;
     height: 50px;
     position: relative;
+    @media (max-width: 576px) {
+        height: 40px;
+    }
+}
+
+.filter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100vh;
+    display: none;
+    z-index: 10;
+}
+
+.filter.active {
+    display: block;
 }
 
 .header {
@@ -94,11 +122,33 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         gap: 50px;
+        transition: 0.4s all;
+        position: relative;
+        z-index: 10;
+        @media (max-width: 1160px) {
+            position: fixed;
+            left: 0;
+            transform: translateX(-100%);
+            top: 0;
+            height: 100%;
+            max-width: 400px;
+            width: 100%;
+            z-index: 11;
+            flex-direction: column;
+            background: var(--white);
+            border-right: 1px solid var(--primary);
+        }
+        &.active {
+            transform: translateX(0);
+        }
     }
     &-bar {
         display: flex;
         gap: 10px;
         align-items: center;
+        @media (max-width: 400px) {
+            flex-direction: column;
+        }
     }
     &-contact {
         gap: 4px;
@@ -119,9 +169,12 @@ html::-webkit-scrollbar-thumb {
     }
     &__lang {
         width: 50px;
+        @media (max-width: 400px) {
+            width: 100%;
+        }
         &-btn {
             position: absolute;
-            width: 100;
+            width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
@@ -140,11 +193,20 @@ html::-webkit-scrollbar-thumb {
         display: flex;
         align-items: center;
         gap: 35px;
-
+        @media (max-width: 1160px) {
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            margin-top: 0;
+        }
         &-item {
             transition: 0.3s all;
-            &:hover {
-                transform: translateY(-4px);
+            @media (min-width: 1024px) {
+                &:hover {
+                    transform: translateY(-4px);
+                }
             }
         }
         &-link {
@@ -155,12 +217,106 @@ html::-webkit-scrollbar-thumb {
             line-height: 16.5px;
         }
     }
+
+    &__exit {
+        width: 100%;
+        height: 40px;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+        padding-right: 20px;
+        display: none;
+        @media (max-width: 1160px) {
+            display: flex;
+        }
+        &-btn {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            z-index: 51;
+            width: 35px;
+            height: 35px;
+            &::before,
+            &::after {
+                position: absolute;
+                content: "";
+                width: 35px;
+                height: 3px;
+                border-radius: 8px;
+                background-color: var(--primary);
+            }
+            &::before {
+                transform: rotate(45deg);
+                top: 50%;
+            }
+            &::after {
+                transform: rotate(-45deg);
+                top: 50%;
+            }
+        }
+    }
+
+    &__open {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        @media (max-width: 1160px) {
+            display: flex;
+        }
+        &-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .btn-elem {
+                position: relative;
+                width: 30px;
+                height: 4px;
+                border-radius: 10px;
+                background: var(--primary);
+                transition:
+                    transform 0.2s linear,
+                    top 0.2s linear 0.2s;
+                &::before {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    width: 30px;
+                    height: 4px;
+                    border-radius: 10px;
+                    top: -9px;
+                    background: var(--primary);
+                    transition:
+                        transform 0.2s linear,
+                        top 0.2s linear 0.2s;
+                }
+                &::after {
+                    position: absolute;
+                    content: "";
+                    display: block;
+                    width: 30px;
+                    height: 4px;
+                    border-radius: 10px;
+                    top: 9px;
+                    background: var(--primary);
+                    transition:
+                        transform 0.2s linear,
+                        top 0.2s linear 0.2s;
+                }
+            }
+        }
+    }
 }
 
 .intro {
     width: 100%;
     position: relative;
-    height: 550px;
+    min-height: 550px;
+    @media (max-width: 480px) {
+        min-height: 495px;
+    }
     &-bg {
         background-image: url(../images/jpg/intro.jpg);
         position: absolute;
@@ -171,14 +327,212 @@ html::-webkit-scrollbar-thumb {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        @media (max-width: 480px) {
+            height: 495px;
+        }
+    }
+    & .container {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        overflow-x: hidden;
+        height: 100%;
+        min-height: 818px;
+        @media (max-width: 768px) {
+            min-height: 638px;
+            padding-top: 60px;
+        }
+        @media (max-width: 480px) {
+            min-height: 495px;
+            padding-top: 45px;
+        }
+    }
+    &__title {
+        color: var(--white);
+        text-align: center;
+        font-family: Oswald;
+        font-size: 80px;
+        font-weight: 400;
+        line-height: 110%; /* 92.4px */
+        text-transform: uppercase;
+        max-width: 730px;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+        @media (max-width: 768px) {
+            font-size: 54px;
+            max-width: 530px;
+        }
+        @media (max-width: 576px) {
+            font-size: 40px;
+            max-width: 380px;
+        }
+        @media (max-width: 480px) {
+            font-size: 30px;
+            max-width: 300px;
+        }
+        span {
+            text-decoration: underline;
+        }
+        &-img {
+            position: absolute;
+            &.one {
+                top: -120px;
+                left: -120px;
+                img {
+                    width: 300px;
+                    height: 300px;
+                }
+                @media (max-width: 768px) {
+                    top: -75px;
+                    left: -55px;
+                    img {
+                        width: 180px;
+                        height: 180px;
+                    }
+                }
+            }
+            &.two {
+                top: -75px;
+                right: -125px;
+                img {
+                    width: 310px;
+                    height: 255px;
+                }
+                @media (max-width: 768px) {
+                    top: -60px;
+                    right: -70px;
+                    img {
+                        width: 200px;
+                        height: 165px;
+                    }
+                }
+            }
+            &.three {
+                bottom: -75px;
+                left: -175px;
+                img {
+                    width: 220px;
+                    height: 155px;
+                }
+                @media (max-width: 768px) {
+                    bottom: -55px;
+                    left: -100px;
+                    img {
+                        width: 160px;
+                        height: 100px;
+                    }
+                }
+            }
+            &.four {
+                bottom: -70px;
+                right: -105px;
+                img {
+                    width: 150px;
+                    height: 140px;
+                }
+                @media (max-width: 768px) {
+                    bottom: -40px;
+                    right: -40px;
+                    img {
+                        width: 85px;
+                        height: 80px;
+                    }
+                }
+            }
+            img {
+                object-fit: contain;
+            }
+            @media (max-width: 576px) {
+                display: none;
+            }
+        }
+    }
+    &__box {
+        margin-top: 30px;
+        width: 100%;
+        max-width: 800px;
+        height: 420px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media (max-width: 768px) {
+            height: 360px;
+        }
+        @media (max-width: 480px) {
+            margin-top: 10px;
+            height: 310px;
+        }
+        &-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                @media (max-width: 576px) {
+                    transform: scale(1.1);
+                }
+                @media (max-width: 480px) {
+                    transform: scale(1.2);
+                }
+            }
+        }
+        &-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            &::after {
+                position: absolute;
+                content: "";
+                background-image: url(../images/png/shadow.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                transform: scale(2);
+                top: -10px;
+                left: 0;
+            }
+            img {
+                width: 50px;
+                height: 43px;
+                object-fit: contain;
+            }
+        }
+        &-btn {
+            color: var(--white);
+            font-family: Oswald;
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 110%; /* 18.7px */
+            text-transform: uppercase;
+            padding: 0 50px;
+            @media (max-width: 576px) {
+                padding: 0 35px;
+                font-size: 14px;
+            }
+        }
     }
 }
 
 .about {
-    margin-top: 40px;
     & .container {
         position: relative;
         padding-top: 70px;
+        @media (max-width: 768px) {
+            padding-top: 50px;
+        }
         &::before {
             content: "";
             position: absolute;
@@ -197,26 +551,56 @@ html::-webkit-scrollbar-thumb {
         font-weight: 400;
         line-height: 92px;
         text-transform: uppercase;
+        @media (max-width: 768px) {
+            font-size: 54px; 
+            line-height: 60px;  
+        }
+        @media (max-width: 576px) {
+            font-size: 38px;   
+            line-height: 42px;
+        }
+        @media (max-width: 480px) {
+            font-size: 32px;   
+            line-height: 36px;
+        }
     }
     &-content {
         margin-top: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media (max-width: 576px) {
+            margin-top: 30px;
+        }
     }
     &-box {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        @media (max-width: 576px) {
+            flex-direction: column;
+        }
     }
     &__item {
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         height: 400px;
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
+        @media (max-width: 992px) {
+            height: 300px;
+            max-width: 300px;
+        }
+        @media (max-width: 576px) {
+            max-width: 400px;
+            height: 190px;
+        }
+        @media (max-width: 480px) {
+            height: 170px;
+        }
         &-text {
             padding: 0 15px;
             text-align: center;
@@ -226,6 +610,18 @@ html::-webkit-scrollbar-thumb {
             font-weight: 400;
             line-height: 110%; /* 59.4px */
             text-transform: uppercase;
+            @media (max-width: 992px) {
+                font-size: 36px;
+                max-width: 265px;
+            }
+            @media (max-width: 576px) {
+                font-size: 30px;
+            }
+            @media (max-width: 480px) {
+                font-size: 24px;   
+                line-height: 30px;
+                max-width: 230px;
+            }
         }
         span {
             display: block;
@@ -436,14 +832,14 @@ html::-webkit-scrollbar-thumb {
         &-item {
             height: 400px;
             width: calc(100% / 3);
-            &.center{
+            &.center {
                 position: relative;
-                .contacts__list-text{
+                .contacts__list-text {
                     color: var(--white);
                 }
             }
-            &.center::after{
-                content: '';
+            &.center::after {
+                content: "";
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -451,24 +847,24 @@ html::-webkit-scrollbar-thumb {
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
-                // filter: blur(4px); 
+                // filter: blur(4px);
                 top: 0;
                 left: 0;
             }
-            &.one{
+            &.one {
                 background-image: url(../images/png/4.png);
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
             }
-            &.two{
+            &.two {
                 background-image: url(../images/png/2.png);
                 background-position: center;
                 background-size: cover;
                 background-repeat: no-repeat;
             }
         }
-        &-link{
+        &-link {
             position: relative;
             z-index: 2;
             width: 100%;
