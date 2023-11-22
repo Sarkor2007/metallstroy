@@ -505,12 +505,9 @@ body.active {
             align-items: center;
             position: relative;
             z-index: 2;
-<<<<<<< HEAD
             @media (max-width: 768px) {
                 gap: 10px;
             }
-=======
->>>>>>> 53c4a41594ff9b84afb46ad9a3b409d2713dec4a
             &::after {
                 position: absolute;
                 content: "";
@@ -524,24 +521,18 @@ body.active {
                 transform: scale(2);
                 top: -10px;
                 left: 0;
-<<<<<<< HEAD
                 @media (max-width: 768px) {
                     transform: scale(1.8);
                 }
-=======
->>>>>>> 53c4a41594ff9b84afb46ad9a3b409d2713dec4a
             }
             img {
                 width: 50px;
                 height: 43px;
                 object-fit: contain;
-<<<<<<< HEAD
                 @media (max-width: 768px) {
                     width: 35px;
                     height: 30px;
                 }
-=======
->>>>>>> 53c4a41594ff9b84afb46ad9a3b409d2713dec4a
             }
         }
         &-btn {
